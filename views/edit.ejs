@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <main class="form-container">
+    <form class="book-form" action="/books/<%= book.id %>" method="POST">
+        <h1>Edit Book</h1>
+        <input type="text" name="title" value="<%= book.title %>" readonly>
+        <input type="text" name="author" value="<%= book.author %>" readonly>
+        <textarea name="review"><%= book.review %></textarea>
+        <input type="number" name="rating" min="0" max="10" step="0.5" value="<%= book.rating %>">
+        <input type="date" name="date_read" value="<%= book.date_read.toISOString().split('T')[0] %>">
+        <button type="submit">Update Book</button>
+    </form>
+    </main>
+</body>
+</html>

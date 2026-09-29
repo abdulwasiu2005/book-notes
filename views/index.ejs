@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Notes</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+    <header>
+    <h1>Book Notes</h1>
+    <a href="/add">Add New Book</a>
+    <a href="/?sort=rating">Sort by Rating</a>
+    <a href="/?sort=recent">Sort by Recent</a>
+    </header>
+    <main>
+    <% allBooks.forEach(book => { %>
+        <article>
+        <div>
+            <img
+                src="https://covers.openlibrary.org/b/olid/<%= book.olid %>-M.jpg?default=false"
+                alt="Book Cover">
+            <h2><%= book.title %></h2>
+            <p class="author">Author: <%= book.author %></p>
+            <p class="review"><strong>Review:</strong> <%= book.review %></p>
+            <p class="rating">Rating: <%= book.rating %></p>
+            <p class="date-read">Date Read: <%= book.date_read %></p>
+            <div class="book-actions">
+            <a href="/books/<%= book.id %>">Edit</a>
+            <form action="/books/<%= book.id %>/delete" method="POST">
+                <button type="submit">Delete</button>
+            </form>
+            </div>
+        </div>
+        </article>
+        <% }); %>
+    </main>
+</body>
+</html>
